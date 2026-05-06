@@ -178,3 +178,7 @@ data/
 logs/
 uploads/
 workspaces/
+# 数据集 + 大文件 (不要提交)
+data/
+outputs/*.pkl
+outputs/eval_log.txt
