@@ -1,0 +1,32 @@
+{
+  "eval": {
+    "n_users": 336,
+    "n_malicious": 51,
+    "n_benign": 285,
+    "roc_auc": 0.9114551083591331,
+    "pr_auc": 0.5663218825992703,
+    "top20_precision": 0.55,
+    "top20_recall": 0.21568627450980393,
+    "top40_precision": 0.6,
+    "top40_recall": 0.47058823529411764,
+    "top60_precision": 0.55,
+    "top60_recall": 0.6470588235294118,
+    "top100_precision": 0.43,
+    "top100_recall": 0.8431372549019608
+  },
+  "all": {
+    "n_users": 1000,
+    "n_malicious": 51,
+    "n_benign": 949,
+    "roc_auc": 0.8980350833694911,
+    "pr_auc": 0.2703915213212278,
+    "top20_precision": 0.3,
+    "top20_recall": 0.11764705882352941,
+    "top40_precision": 0.175,
+    "top40_recall": 0.13725490196078433,
+    "top60_precision": 0.21666666666666667,
+    "top60_recall": 0.2549019607843137,
+    "top100_precision": 0.29,
+    "top100_recall": 0.5686274509803921
+  }
+}
