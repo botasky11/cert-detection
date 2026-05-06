@@ -160,8 +160,6 @@ cython_debug/
 .idea/
 .vscode/
 
-workspaces
-logs
 input
 
 .DS_STORE
@@ -175,7 +173,7 @@ node_modules/
 package-lock.json
 
 # database files
-tot.db
+*.db
 data/
 logs/
 uploads/
