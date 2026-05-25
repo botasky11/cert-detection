@@ -11,7 +11,7 @@
 
 ## 1. 数据与威胁场景
 
-CMU-CERT r4.2 是 "dense needles" 数据集, 在 1000 名员工中混入了 60 个红队
+CMU-CERT r4.2 是 "dense needles" 数据集, 在 1000 名员工中混入了 70 个红队
 (insider) 用户, 共 3 类典型场景:
 
 | 场景 | # 用户 | 行为剧本 |
@@ -20,7 +20,8 @@ CMU-CERT r4.2 是 "dense needles" 数据集, 在 1000 名员工中混入了 60 �
 | **S2: 求职跳槽-数据外发**     | 30 | 上班时浏览求职网 → 拷竞品文档 → 通过个人邮箱外发 |
 | **S3: 系统管理员-键盘记录器** | 10 | 访问 keylogger.com → 安装 .exe → 假冒 CEO 外发邮件 |
 
-(部分用户在 S1/S3 中重叠, 实际唯一 ID = 60 个; 数据中有事件的 = 51 个。)
+当前 `src/build_ground_truth.py` 使用官方 `insiders.csv` 中 `dataset == '4.2'`
+核对后的完整清单: S1/S2/S3 分别为 30/30/10 个用户, 共 70 个唯一恶意用户。
 
 ---
 
@@ -74,29 +75,29 @@ CMU-CERT r4.2 是 "dense needles" 数据集, 在 1000 名员工中混入了 60 �
 **融合**: 4 个分量在 1000 用户上 min-max 归一化后线性加权:
 
 ```
-R(u) = 0.30·z(rule) + 0.10·z(perplexity) + 0.30·z(similarity) + 0.30·z(peer)
+R(u) = 0.40·z(rule) + 0.20·z(perplexity) + 0.25·z(similarity) + 0.15·z(peer)
 ```
 
 ---
 
 ## 3. 评估结果
 
-在 1000 名员工 (51 名实际有事件的内部威胁) 上的检测效果:
+在 1000 名员工 (70 名官方 r4.2 内部威胁用户) 上的检测效果:
 
-| 指标 | 全部 1000 用户 | 评估集 (336 用户, 51 mal) |
+| 指标 | 全部 1000 用户 | 评估集 (349 用户, 70 mal) |
 |------|---------------:|---------------------------:|
-| **ROC-AUC**         |   **0.898**  |   **0.911**  |
-| **PR-AUC**          |   0.270      |   0.566      |
-| Top-20 Precision    |   0.30       |   0.55       |
-| Top-40 Precision    |   0.18       |   0.60       |
-| Top-100 Precision   |   0.29       |   0.43       |
-| **Top-100 Recall**  |   **0.57**   |   **0.84**   |
+| **ROC-AUC**         |   **0.905**  |   **0.905**  |
+| **PR-AUC**          |   0.328      |   0.607      |
+| Top-20 Precision    |   0.30       |   0.50       |
+| Top-40 Precision    |   0.28       |   0.60       |
+| Top-100 Precision   |   0.37       |   0.57       |
+| **Top-100 Recall**  |   **0.53**   |   **0.81**   |
 
 排名分布:
 
-* Top-50  : 12 / 51 命中 (24 %)
-* Top-100 : 29 / 51 命中 (57 %)
-* Top-150 : 36 / 51 命中 (71 %)
+* Top-50  : 15 / 70 命中 (21 %)
+* Top-100 : 37 / 70 命中 (53 %)
+* Top-150 : 49 / 70 命中 (70 %)
 
 > 这是在**只标 0.05 % 训练标签** (无监督训练) 下取得的结果, 与文献中
 > 同等设定下的 baseline 相当。
@@ -110,7 +111,7 @@ R(u) = 0.30·z(rule) + 0.10·z(perplexity) + 0.30·z(similarity) + 0.30·z(peer)
 | `fig_risk_distribution.png`    | 良性 vs 恶意用户的分数分布直方图 |
 | `fig_top30_contribution.png`   | Top-30 风险用户每个检测器的贡献 (恶意用户用黑框圈出) |
 | `fig_scenario_breakdown.png`   | Top-80 中 3 个场景的命中分布 |
-| `fig_malicious_ranks.png`      | 51 个真实恶意用户的排名直方图 |
+| `fig_malicious_ranks.png`      | 70 个真实恶意用户的排名直方图 |
 
 ---
 
@@ -135,7 +136,7 @@ webapp/
 │   ├── user_sequences.pkl        # 1000 用户事件流
 │   ├── user_daily_seq.pkl        # 按天分组的 token 序列
 │   ├── risk_scores.csv           # 1000 用户最终风险分数
-│   ├── malicious_user_ranking.csv# 51 名真实恶意用户的排名
+│   ├── malicious_user_ranking.csv# 70 名真实恶意用户的排名
 │   ├── top_risk_explanations.json# Top-80 解释 (命中了哪条规则)
 │   ├── metrics.json              # 评估指标 JSON
 │   └── fig_*.png                 # 6 张可视化图
@@ -225,13 +226,13 @@ IDF(t) = log( (N+1) / (df(t) + 1) )
 
 | 排名 | 用户 | risk | 是否真恶意 | 主要命中场景 |
 |---:|------|----:|---:|------|
-| 1  | CCA0046 | 0.84 | ✅ S2 | S2_DEPARTING (rule=593, peer=188) |
-| 3  | MPM0220 | 0.79 | ✅ S2 | S2_DEPARTING (rule=594, peer=190) |
-| 6  | BSS0369 | 0.75 | ✅ S1 | S1_LEAK_USB |
-| 7  | GTD0219 | 0.74 | ✅ S2 | S2_DEPARTING |
-| 10 | MOS0047 | 0.68 | ✅ S3 | S3_SYSADMIN_KEYLOG |
-| 17 | MCF0600 | 0.55 | ✅ S1 | S1_LEAK_USB |
-| 33 | MAR0955 | 0.45 | ✅ S1 | S1_LEAK_USB |
+| 1  | CCA0046 | 0.85 | ✅ S3 | S3_SYSADMIN_KEYLOG (rule=593, peer=202) |
+| 3  | MPM0220 | 0.79 | ✅ S3 | S3_SYSADMIN_KEYLOG (rule=594, peer=204) |
+| 6  | BSS0369 | 0.75 | ✅ S3 | S3_SYSADMIN_KEYLOG |
+| 7  | GTD0219 | 0.75 | ✅ S3 | S3_SYSADMIN_KEYLOG |
+| 10 | MOS0047 | 0.69 | ✅ S2 | S2_DEPARTING |
+| 15 | MCF0600 | 0.57 | ✅ S1 | S1_LEAK_USB |
+| 31 | MAR0955 | 0.47 | ✅ S1 | S1_LEAK_USB |
 
 (详见 `outputs/top_risk_explanations.json`)
 
