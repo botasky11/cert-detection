@@ -182,3 +182,5 @@ workspaces/
 data/
 outputs/*.pkl
 outputs/eval_log.txt
+# R-GCN intermediate binary graph (rebuildable from CSV in 1 min)
+outputs/rgcn/graph.pt

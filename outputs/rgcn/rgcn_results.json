@@ -1,0 +1,240 @@
+{
+  "config": {
+    "graph": "outputs/rgcn/graph.pt",
+    "out": "outputs/rgcn/rgcn_results.json",
+    "hidden": 64,
+    "num_layers": 2,
+    "num_bases": 4,
+    "dropout": 0.3,
+    "lr": 0.01,
+    "weight_decay": 0.0005,
+    "epochs": 300,
+    "patience": 50,
+    "n_splits": 5,
+    "seed": 42,
+    "device": "cpu",
+    "verbose": true
+  },
+  "n_users": 170,
+  "n_mal": 70,
+  "n_ben": 100,
+  "fold_aucs": [
+    1.0,
+    1.0,
+    0.9964285714285714,
+    0.9321428571428572,
+    0.9178571428571429
+  ],
+  "fold_best_epochs": [
+    15,
+    7,
+    12,
+    17,
+    3
+  ],
+  "mean_auc": 0.9692857142857143,
+  "std_auc": 0.03646356862314346,
+  "overall": {
+    "roc_auc": 0.9515714285714286,
+    "pr_auc": 0.9362558640912744,
+    "top_k": {
+      "20": {
+        "precision": 1.0,
+        "recall": 0.2857,
+        "hit": 20
+      },
+      "40": {
+        "precision": 0.925,
+        "recall": 0.5286,
+        "hit": 37
+      },
+      "100": {
+        "precision": 0.68,
+        "recall": 0.9714,
+        "hit": 68
+      }
+    }
+  },
+  "ranking_top30": [
+    {
+      "rank": 1,
+      "user": "GTD0219",
+      "score": 0.9999949932098389,
+      "label": 1
+    },
+    {
+      "rank": 2,
+      "user": "JGT0221",
+      "score": 0.9999091625213623,
+      "label": 1
+    },
+    {
+      "rank": 3,
+      "user": "JTM0223",
+      "score": 0.9997976422309875,
+      "label": 1
+    },
+    {
+      "rank": 4,
+      "user": "MSO0222",
+      "score": 0.9994145631790161,
+      "label": 1
+    },
+    {
+      "rank": 5,
+      "user": "BBS0039",
+      "score": 0.9979185461997986,
+      "label": 1
+    },
+    {
+      "rank": 6,
+      "user": "BDV0168",
+      "score": 0.9964591860771179,
+      "label": 1
+    },
+    {
+      "rank": 7,
+      "user": "JMB0308",
+      "score": 0.9956943988800049,
+      "label": 1
+    },
+    {
+      "rank": 8,
+      "user": "AKR0057",
+      "score": 0.9951866269111633,
+      "label": 1
+    },
+    {
+      "rank": 9,
+      "user": "AJR0932",
+      "score": 0.9944975972175598,
+      "label": 1
+    },
+    {
+      "rank": 10,
+      "user": "FMG0527",
+      "score": 0.9913889765739441,
+      "label": 1
+    },
+    {
+      "rank": 11,
+      "user": "RGG0064",
+      "score": 0.98473060131073,
+      "label": 1
+    },
+    {
+      "rank": 12,
+      "user": "RMW0542",
+      "score": 0.9845263957977295,
+      "label": 1
+    },
+    {
+      "rank": 13,
+      "user": "IUB0565",
+      "score": 0.9776385426521301,
+      "label": 1
+    },
+    {
+      "rank": 14,
+      "user": "JRG0207",
+      "score": 0.9700040817260742,
+      "label": 1
+    },
+    {
+      "rank": 15,
+      "user": "RHL0992",
+      "score": 0.9690060615539551,
+      "label": 1
+    },
+    {
+      "rank": 16,
+      "user": "JJM0203",
+      "score": 0.9685103297233582,
+      "label": 1
+    },
+    {
+      "rank": 17,
+      "user": "RKD0604",
+      "score": 0.9683733582496643,
+      "label": 1
+    },
+    {
+      "rank": 18,
+      "user": "DRR0162",
+      "score": 0.9662603139877319,
+      "label": 1
+    },
+    {
+      "rank": 19,
+      "user": "XHW0498",
+      "score": 0.965477466583252,
+      "label": 1
+    },
+    {
+      "rank": 20,
+      "user": "AAM0658",
+      "score": 0.9629303216934204,
+      "label": 1
+    },
+    {
+      "rank": 21,
+      "user": "RAB0589",
+      "score": 0.9587368369102478,
+      "label": 1
+    },
+    {
+      "rank": 22,
+      "user": "CAH0936",
+      "score": 0.9583415389060974,
+      "label": 1
+    },
+    {
+      "rank": 23,
+      "user": "RRC0553",
+      "score": 0.9546939134597778,
+      "label": 0
+    },
+    {
+      "rank": 24,
+      "user": "IJM0776",
+      "score": 0.9511339068412781,
+      "label": 1
+    },
+    {
+      "rank": 25,
+      "user": "WDD0366",
+      "score": 0.9474496245384216,
+      "label": 1
+    },
+    {
+      "rank": 26,
+      "user": "AAF0535",
+      "score": 0.9447134137153625,
+      "label": 1
+    },
+    {
+      "rank": 27,
+      "user": "BTL0226",
+      "score": 0.9445292353630066,
+      "label": 1
+    },
+    {
+      "rank": 28,
+      "user": "BSS0369",
+      "score": 0.9409992098808289,
+      "label": 1
+    },
+    {
+      "rank": 29,
+      "user": "MAS0025",
+      "score": 0.9337963461875916,
+      "label": 1
+    },
+    {
+      "rank": 30,
+      "user": "TAP0551",
+      "score": 0.9301981925964355,
+      "label": 1
+    }
+  ]
+}
