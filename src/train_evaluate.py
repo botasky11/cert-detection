@@ -21,7 +21,9 @@ sys.path.append(os.path.dirname(__file__))
 from sequence_matching import InsiderThreatScorer
 from build_ground_truth import get_malicious_users
 
-OUT_DIR = "/home/user/webapp/outputs"
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+OUT_DIR = str(PROJECT_ROOT / 'outputs')
 
 
 def load_data():
@@ -48,7 +50,7 @@ def split_train_users(seqs, malicious_set, train_ratio=0.7, seed=42):
     return train_users, eval_users
 
 
-def metrics(scores_df, malicious_set, k_list=(20, 40, 60, 100)):
+def metrics(scores_df, malicious_set, k_list=(10, 20, 30, 50, 70, 100)):
     """计算 ROC-AUC / PR-AUC / Top-K Precision&Recall."""
     from sklearn.metrics import roc_auc_score, average_precision_score
 

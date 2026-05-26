@@ -1,7 +1,7 @@
 [
   {
     "user": "CCA0046",
-    "risk": 0.8516532572851253,
+    "risk": 0.842975070884161,
     "is_malicious": true,
     "scenario": 3,
     "len": 7469,
@@ -36,10 +36,10 @@
   },
   {
     "user": "AJF0370",
-    "risk": 0.7926632138881657,
+    "risk": 0.7957087608987015,
     "is_malicious": false,
     "scenario": 0,
-    "len": 27498,
+    "len": 27688,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -47,7 +47,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 99.28975019915265
+        "score": 101.22677817504459
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -57,21 +57,21 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 1.127921734716708
+        "score": 1.1054806286567833
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.6783455313831706
+        "score": 0.6592383075160585
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.26666666666666666
+        "score": 0.37333333333333335
       }
     ]
   },
   {
     "user": "MPM0220",
-    "risk": 0.7906150271394232,
+    "risk": 0.7905792318292598,
     "is_malicious": true,
     "scenario": 3,
     "len": 15985,
@@ -106,45 +106,45 @@
   },
   {
     "user": "BAL0044",
-    "risk": 0.7875361114803983,
+    "risk": 0.7702559182770892,
     "is_malicious": false,
     "scenario": 0,
-    "len": 12595,
+    "len": 13093,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
         "score": 470.7791793023183
       },
       {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 64.84123191375498
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 69.49275423346316
       },
       {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 64.66069903717494
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 64.84123191375498
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 1.2061998059807397
+        "score": 1.1673479894100858
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.7234395768363895
+        "score": 0.6973457079426726
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.37333333333333335
+        "score": 0.4
       }
     ]
   },
   {
     "user": "IBB0359",
-    "risk": 0.7613583118371691,
+    "risk": 0.7635909847489278,
     "is_malicious": false,
     "scenario": 0,
-    "len": 17827,
+    "len": 17840,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -156,7 +156,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 53.915204071147905
+        "score": 58.14797717373183
       }
     ],
     "sim_top": [
@@ -170,13 +170,13 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.29333333333333333
+        "score": 0.32000000000000006
       }
     ]
   },
   {
     "user": "BSS0369",
-    "risk": 0.7486964657147166,
+    "risk": 0.7477609505598326,
     "is_malicious": true,
     "scenario": 3,
     "len": 11999,
@@ -211,7 +211,7 @@
   },
   {
     "user": "GTD0219",
-    "risk": 0.7466634645227015,
+    "risk": 0.7449610299674068,
     "is_malicious": true,
     "scenario": 3,
     "len": 4494,
@@ -246,10 +246,10 @@
   },
   {
     "user": "HDS0367",
-    "risk": 0.7386730817485204,
+    "risk": 0.7376485703328003,
     "is_malicious": false,
     "scenario": 0,
-    "len": 12818,
+    "len": 12824,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -267,11 +267,11 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 1.2055771468060263
+        "score": 1.203138651330963
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.7486437768041506
+        "score": 0.746570245552925
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
@@ -281,32 +281,32 @@
   },
   {
     "user": "EIS0041",
-    "risk": 0.7302941782108261,
+    "risk": 0.7288187878451436,
     "is_malicious": false,
     "scenario": 0,
-    "len": 12777,
+    "len": 12797,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
         "score": 390.2363754442449
       },
       {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 62.661212093147554
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 62.76670824201303
       },
       {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 62.23462501193327
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 62.661212093147554
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 1.1802953903708366
+        "score": 1.1759054768713448
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.7298217068987062
+        "score": 0.7266318190001974
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
@@ -316,7 +316,7 @@
   },
   {
     "user": "MOS0047",
-    "risk": 0.6888879960448384,
+    "risk": 0.6860991250029939,
     "is_malicious": true,
     "scenario": 2,
     "len": 6976,
@@ -351,10 +351,10 @@
   },
   {
     "user": "IRM0931",
-    "risk": 0.6731415679088217,
+    "risk": 0.6621728037160978,
     "is_malicious": false,
     "scenario": 0,
-    "len": 10472,
+    "len": 10795,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -362,7 +362,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 123.00538375859337
+        "score": 128.50569048183155
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -372,11 +372,11 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.9066306400895932
+        "score": 0.8860751886954503
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.5308343377062823
+        "score": 0.5176017715294332
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
@@ -386,18 +386,18 @@
   },
   {
     "user": "DLM0051",
-    "risk": 0.6397547867581839,
+    "risk": 0.6496954052614929,
     "is_malicious": false,
     "scenario": 0,
-    "len": 33349,
+    "len": 34538,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 324.2876973251115
+        "score": 323.686926254612
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 154.58879813661946
+        "score": 157.85489780280705
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -407,21 +407,21 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.9026847965387721
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.452459238499501
+        "score": 0.8152870160824248
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.26666666666666666
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.3951285517978549
       }
     ]
   },
   {
     "user": "AOK0844",
-    "risk": 0.6158620940225896,
+    "risk": 0.6131837798791444,
     "is_malicious": false,
     "scenario": 0,
     "len": 3770,
@@ -456,10 +456,10 @@
   },
   {
     "user": "BVC0790",
-    "risk": 0.5991825224182991,
+    "risk": 0.5972093640275443,
     "is_malicious": false,
     "scenario": 0,
-    "len": 8491,
+    "len": 8542,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -467,7 +467,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 112.98762363095145
+        "score": 117.32922684155423
       }
     ],
     "sim_top": [
@@ -487,7 +487,7 @@
   },
   {
     "user": "MCF0600",
-    "risk": 0.5670120343133656,
+    "risk": 0.5655560542910054,
     "is_malicious": true,
     "scenario": 1,
     "len": 1032,
@@ -500,7 +500,7 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 1.173102034974664
+        "score": 1.1731020349746637
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -514,7 +514,7 @@
   },
   {
     "user": "NOB0181",
-    "risk": 0.5615308052995804,
+    "risk": 0.56261697772125,
     "is_malicious": false,
     "scenario": 0,
     "len": 5649,
@@ -549,7 +549,7 @@
   },
   {
     "user": "NAF0326",
-    "risk": 0.5564570471547056,
+    "risk": 0.5575489963303628,
     "is_malicious": false,
     "scenario": 0,
     "len": 12956,
@@ -584,7 +584,7 @@
   },
   {
     "user": "IKP0472",
-    "risk": 0.5422301807094163,
+    "risk": 0.5422479992139357,
     "is_malicious": false,
     "scenario": 0,
     "len": 3963,
@@ -618,42 +618,11 @@
     ]
   },
   {
-    "user": "RAW0915",
-    "risk": 0.5405504392138691,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 6884,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 151.6970538049323
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 112.70966280896556
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8195806671541453
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.44378436477083455
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      }
-    ]
-  },
-  {
     "user": "BDI0533",
-    "risk": 0.5286678959757098,
+    "risk": 0.5331706216679105,
     "is_malicious": false,
     "scenario": 0,
-    "len": 6980,
+    "len": 6981,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -661,7 +630,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 33.691037124441564
+        "score": 38.937059413513936
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -679,43 +648,47 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.26666666666666666
+        "score": 0.29333333333333333
       }
     ]
   },
   {
-    "user": "EHD0584",
-    "risk": 0.5251023918064697,
-    "is_malicious": true,
-    "scenario": 1,
-    "len": 889,
+    "user": "RAW0915",
+    "risk": 0.5262174559598145,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 7112,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 283.2417899309158
+        "score": 151.6970538049323
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 120.14559353676309
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8679807093410061
+        "score": 0.8089415813405683
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.21707418480848245
+        "score": 0.43671738263145155
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.13333333333333333
+        "score": 0.4
       }
     ]
   },
   {
     "user": "LBF0214",
-    "risk": 0.5236089502982972,
+    "risk": 0.5242491735289518,
     "is_malicious": false,
     "scenario": 0,
-    "len": 10012,
+    "len": 10013,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -746,8 +719,35 @@
     ]
   },
   {
+    "user": "EHD0584",
+    "risk": 0.5218410682283849,
+    "is_malicious": true,
+    "scenario": 1,
+    "len": 889,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 283.2417899309158
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.8679807093410061
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.21707418480848245
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.13333333333333333
+      }
+    ]
+  },
+  {
     "user": "BRB0355",
-    "risk": 0.5150385444916182,
+    "risk": 0.5171158053596852,
     "is_malicious": false,
     "scenario": 0,
     "len": 8447,
@@ -778,10 +778,10 @@
   },
   {
     "user": "MLM0950",
-    "risk": 0.5118371244541637,
+    "risk": 0.515258539354575,
     "is_malicious": false,
     "scenario": 0,
-    "len": 6237,
+    "len": 6251,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -789,7 +789,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 67.77222875614396
+        "score": 72.93772340252482
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -813,10 +813,10 @@
   },
   {
     "user": "ILJ0526",
-    "risk": 0.49221396688870434,
+    "risk": 0.4907370088499308,
     "is_malicious": false,
     "scenario": 0,
-    "len": 4756,
+    "len": 4865,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -824,7 +824,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 95.31967086138809
+        "score": 98.06997010210199
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -834,7 +834,7 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7514177395487804
+        "score": 0.748587214950067
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -847,42 +847,42 @@
     ]
   },
   {
-    "user": "NGC0058",
-    "risk": 0.4846709122251078,
+    "user": "OBH0499",
+    "risk": 0.48625729909998927,
     "is_malicious": false,
     "scenario": 0,
-    "len": 6169,
+    "len": 18266,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 148.824625719079
+        "score": 129.66114245611791
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 93.88651755864831
+        "score": 111.17514058620078
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8201567141022341
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.463853005624836
+        "score": 0.790820241151662
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
         "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.3337097836026647
       }
     ]
   },
   {
     "user": "IBS0836",
-    "risk": 0.4843040624343045,
+    "risk": 0.48509556398641,
     "is_malicious": false,
     "scenario": 0,
-    "len": 2954,
+    "len": 2969,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -890,7 +890,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 78.42356041203912
+        "score": 81.86968984783309
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -913,42 +913,11 @@
     ]
   },
   {
-    "user": "OBH0499",
-    "risk": 0.4815371344030135,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 17708,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 131.48822815417532
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 106.81088806816322
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.795592168342678
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.3466666666666667
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.3337097836026647
-      }
-    ]
-  },
-  {
     "user": "LRR0148",
-    "risk": 0.4757940123382176,
+    "risk": 0.47327497400543256,
     "is_malicious": false,
     "scenario": 0,
-    "len": 9291,
+    "len": 9293,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -962,21 +931,56 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7658125933015314
+        "score": 0.7414846868150415
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.4044290833831634
+        "score": 0.38010117689667355
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.29333333333333333
+        "score": 0.3466666666666667
+      }
+    ]
+  },
+  {
+    "user": "KCO0122",
+    "risk": 0.47049147861359875,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 7216,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 114.89417900972671
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 73.03389241903274
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 9.802581434685472
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.8490235506042112
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.43039575169198196
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.37333333333333335
       }
     ]
   },
   {
     "user": "JHP0583",
-    "risk": 0.4693933256164379,
+    "risk": 0.4700083258953792,
     "is_malicious": false,
     "scenario": 0,
     "len": 4999,
@@ -1010,8 +1014,70 @@
     ]
   },
   {
+    "user": "HSB0196",
+    "risk": 0.46850490235738623,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 26282,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 145.02809170074016
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 121.926456340086
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.8205412166027773
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.37274503757113364
+      }
+    ]
+  },
+  {
+    "user": "NGC0058",
+    "risk": 0.46799311678032857,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 6546,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 147.2787646188562
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 98.31930066009369
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7833038146090388
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.4341483696169649
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      }
+    ]
+  },
+  {
     "user": "MAR0955",
-    "risk": 0.46860606867546273,
+    "risk": 0.4658092522281606,
     "is_malicious": true,
     "scenario": 1,
     "len": 1080,
@@ -1024,7 +1090,7 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.9802144140805285
+        "score": 0.9802144140805287
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -1037,43 +1103,8 @@
     ]
   },
   {
-    "user": "KCO0122",
-    "risk": 0.46758643944450173,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 7213,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 114.89417900972671
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 69.38695432371784
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 9.802581434685472
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8490235506042112
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.43039575169198196
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.37333333333333335
-      }
-    ]
-  },
-  {
     "user": "BTL0226",
-    "risk": 0.46551787222282004,
+    "risk": 0.45969243576416186,
     "is_malicious": true,
     "scenario": 1,
     "len": 3117,
@@ -1103,8 +1134,97 @@
     ]
   },
   {
+    "user": "HCL0651",
+    "risk": 0.4581904145126842,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 4139,
+    "rule_hits": [
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 76.36662422833128
+      },
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 39.959898337646536
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.8862300875465309
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.4667638999062009
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      }
+    ]
+  },
+  {
+    "user": "LJR0523",
+    "risk": 0.4549152765335248,
+    "is_malicious": true,
+    "scenario": 1,
+    "len": 840,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 258.65992226203383
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7503901783451506
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.08000000000000002
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.06153846153846154
+      }
+    ]
+  },
+  {
+    "user": "AHD0848",
+    "risk": 0.45413277938040253,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 2242,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 94.6064708457171
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 67.53512637568708
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.803220869254123
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.4610452891179414
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      }
+    ]
+  },
+  {
     "user": "CHM0821",
-    "risk": 0.45314443453502834,
+    "risk": 0.4526917462005529,
     "is_malicious": false,
     "scenario": 0,
     "len": 3520,
@@ -1138,221 +1258,8 @@
     ]
   },
   {
-    "user": "LJR0523",
-    "risk": 0.45245181399974327,
-    "is_malicious": true,
-    "scenario": 1,
-    "len": 840,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 258.65992226203383
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7503901783451506
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.08000000000000002
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.06153846153846154
-      }
-    ]
-  },
-  {
-    "user": "HCL0651",
-    "risk": 0.4521588519876496,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 4103,
-    "rule_hits": [
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 67.65923472847479
-      },
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 39.959898337646536
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8868277002702191
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.4667638999062009
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      }
-    ]
-  },
-  {
-    "user": "AHD0848",
-    "risk": 0.4519082427728732,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 2182,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 94.6064708457171
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 62.0254340468555
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.803220869254123
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.4610452891179414
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      }
-    ]
-  },
-  {
-    "user": "HSB0196",
-    "risk": 0.45121114948918023,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 25843,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 145.27212286443103
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 109.80600546337728
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8285809652407256
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.37774793410747665
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.26666666666666666
-      }
-    ]
-  },
-  {
-    "user": "RSC0089",
-    "risk": 0.4493948275087814,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 12353,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 142.50905958644955
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 111.3912326286152
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 9.802581434685472
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.5251247064918907
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.12307692307692308
-      }
-    ]
-  },
-  {
-    "user": "EHB0824",
-    "risk": 0.44870524204532436,
-    "is_malicious": true,
-    "scenario": 1,
-    "len": 584,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 221.1952524775659
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8569216714326011
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.18666666666666668
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.06153846153846154
-      }
-    ]
-  },
-  {
-    "user": "WIQ0567",
-    "risk": 0.4451291852548332,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 10295,
-    "rule_hits": [
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 128.6525776691517
-      },
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 123.89221769484004
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.6536498557164265
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.3337097836026647
-      }
-    ]
-  },
-  {
     "user": "WDD0366",
-    "risk": 0.44460310619018617,
+    "risk": 0.44590088444340226,
     "is_malicious": true,
     "scenario": 1,
     "len": 5910,
@@ -1378,8 +1285,66 @@
     ]
   },
   {
+    "user": "JDC0030",
+    "risk": 0.44463121149682566,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 7952,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 136.38617230379953
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 80.96265691699952
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7167543869246539
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.4060678452054921
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      }
+    ]
+  },
+  {
+    "user": "EHB0824",
+    "risk": 0.44455710706596624,
+    "is_malicious": true,
+    "scenario": 1,
+    "len": 584,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 221.1952524775659
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.8569216714326011
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.18666666666666668
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.06153846153846154
+      }
+    ]
+  },
+  {
     "user": "AAM0658",
-    "risk": 0.444432741033365,
+    "risk": 0.44424273216299537,
     "is_malicious": true,
     "scenario": 1,
     "len": 1179,
@@ -1409,39 +1374,43 @@
     ]
   },
   {
-    "user": "NMS0280",
-    "risk": 0.43945511198758347,
+    "user": "RSC0089",
+    "risk": 0.4393074239300168,
     "is_malicious": false,
     "scenario": 0,
-    "len": 3061,
+    "len": 12672,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 110.59837742513412
+        "score": 142.50905958644955
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 89.95417826975802
+        "score": 114.5118403293832
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 9.802581434685472
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7647890454049127
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.4059481518622208
+        "score": 0.5030147409753424
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
         "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.12307692307692308
       }
     ]
   },
   {
     "user": "QOS0878",
-    "risk": 0.43682752469208813,
+    "risk": 0.4381419873207414,
     "is_malicious": false,
     "scenario": 0,
     "len": 2556,
@@ -1471,15 +1440,46 @@
     ]
   },
   {
-    "user": "LJT0817",
-    "risk": 0.43479253628452086,
+    "user": "NMS0280",
+    "risk": 0.4355573240956684,
     "is_malicious": false,
     "scenario": 0,
-    "len": 7380,
+    "len": 3117,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 110.59837742513412
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 93.43264150110885
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7594296231062518
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.4059481518622208
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      }
+    ]
+  },
+  {
+    "user": "LJT0817",
+    "risk": 0.435474647987213,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 7391,
     "rule_hits": [
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 99.65210071874299
+        "score": 101.64156553096834
       },
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -1493,7 +1493,7 @@
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7955832352950193
+        "score": 0.7943636962296358
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -1506,8 +1506,70 @@
     ]
   },
   {
+    "user": "HPH0075",
+    "risk": 0.4273199628890163,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 25093,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 135.94685860900526
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 112.03754381301076
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.6470309220069774
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.3013699935587034
+      }
+    ]
+  },
+  {
+    "user": "FKK0055",
+    "risk": 0.42506561437287615,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 6632,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 141.44239617038065
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 77.65927534432441
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.6759015033523657
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.37529861443626134
+      }
+    ]
+  },
+  {
     "user": "RHL0992",
-    "risk": 0.43283182203043197,
+    "risk": 0.42480429709549977,
     "is_malicious": true,
     "scenario": 2,
     "len": 3358,
@@ -1533,25 +1595,56 @@
     ]
   },
   {
-    "user": "JDC0030",
-    "risk": 0.42339964323167867,
+    "user": "LBH0942",
+    "risk": 0.42230581504430725,
     "is_malicious": false,
     "scenario": 0,
-    "len": 7689,
+    "len": 23965,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 138.5657495528961
+        "score": 157.49190218658265
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 47.54836786148095
+        "score": 74.47129885055924
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7199463580060637
+        "score": 0.8319986021079103
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.3823655965756444
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.32000000000000006
+      }
+    ]
+  },
+  {
+    "user": "HAD0246",
+    "risk": 0.42018775020351157,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 7266,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 162.18124976008647
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 32.122359471498
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7391413610663536
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -1559,13 +1652,13 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
+        "score": 0.29333333333333333
       }
     ]
   },
   {
     "user": "CAH0936",
-    "risk": 0.4224938352632169,
+    "risk": 0.4174001884402219,
     "is_malicious": true,
     "scenario": 1,
     "len": 2555,
@@ -1595,25 +1688,25 @@
     ]
   },
   {
-    "user": "FKK0055",
-    "risk": 0.42194261989364973,
+    "user": "WIQ0567",
+    "risk": 0.4167989064795981,
     "is_malicious": false,
     "scenario": 0,
-    "len": 6601,
+    "len": 11044,
     "rule_hits": [
       {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 141.44239617038065
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 131.51736975017403
       },
       {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 71.0418241069853
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 123.89221769484004
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.6759015033523657
+        "score": 0.6343126725187689
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
@@ -1621,148 +1714,24 @@
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.37529861443626134
-      }
-    ]
-  },
-  {
-    "user": "LBH0942",
-    "risk": 0.4184066315364168,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 23952,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 157.49190218658265
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 71.92409103204403
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8319986021079103
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.3823655965756444
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.26666666666666666
-      }
-    ]
-  },
-  {
-    "user": "ATP0662",
-    "risk": 0.41695721864777924,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 10201,
-    "rule_hits": [
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 129.09084355612322
-      },
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 83.55940291616487
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.6187793484925468
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.30938187711617476
-      }
-    ]
-  },
-  {
-    "user": "HAD0246",
-    "risk": 0.4140784952117372,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 7265,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 162.18124976008647
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 24.558792828224455
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7391413610663536
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.4060678452054921
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.26666666666666666
-      }
-    ]
-  },
-  {
-    "user": "HPH0075",
-    "risk": 0.41240984529380387,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 24611,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 135.94685860900526
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 97.21199458063624
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.6773797093469247
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.31644885925555777
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.26666666666666666
+        "score": 0.3337097836026647
       }
     ]
   },
   {
     "user": "QJR0688",
-    "risk": 0.41150378701804047,
+    "risk": 0.4141653882439076,
     "is_malicious": false,
     "scenario": 0,
-    "len": 6496,
+    "len": 6512,
     "rule_hits": [
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 88.83538027084694
+      },
       {
         "scenario": "S1_LEAK_VIA_USB",
         "score": 87.88144099803547
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 83.76531838769252
       }
     ],
     "sim_top": [
@@ -1782,10 +1751,10 @@
   },
   {
     "user": "HRL0540",
-    "risk": 0.4046291295530735,
+    "risk": 0.4059401432403129,
     "is_malicious": false,
     "scenario": 0,
-    "len": 11707,
+    "len": 11711,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -1793,13 +1762,13 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 39.73862756307632
+        "score": 39.697945770946525
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.9059861809276999
+        "score": 0.9056521046514964
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -1812,15 +1781,46 @@
     ]
   },
   {
-    "user": "VCC0396",
-    "risk": 0.40306080184926824,
+    "user": "ATP0662",
+    "risk": 0.40376743891707206,
     "is_malicious": false,
     "scenario": 0,
-    "len": 7527,
+    "len": 10630,
     "rule_hits": [
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 124.86898640373212
+        "score": 136.4726304905467
+      },
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 81.61436135695689
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.6080467852194964
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.30938187711617476
+      }
+    ]
+  },
+  {
+    "user": "VCC0396",
+    "risk": 0.40223501688955615,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 7564,
+    "rule_hits": [
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 127.06388134643103
       },
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -1843,8 +1843,287 @@
     ]
   },
   {
+    "user": "BRM0995",
+    "risk": 0.39727924247161306,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 10589,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 92.18452516024959
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 41.81127271183811
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 9.802581434685472
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.759757512853287
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.3466666666666667
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.26135172199983714
+      }
+    ]
+  },
+  {
+    "user": "TDS0984",
+    "risk": 0.39422506906453125,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 9836,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 179.94072771951298
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 53.8742555883705
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 9.802581434685472
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7781818770360885
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.47198458252557873
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      }
+    ]
+  },
+  {
+    "user": "BDV0168",
+    "risk": 0.3921295874590859,
+    "is_malicious": true,
+    "scenario": 1,
+    "len": 3463,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 166.80328532909326
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 5.282486154642235
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.8595177510338594
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.21333333333333335
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.13389652314128903
+      }
+    ]
+  },
+  {
+    "user": "CGB0637",
+    "risk": 0.3915389766490906,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 6688,
+    "rule_hits": [
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 118.67396780143845
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7793299682241965
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.35803769008915454
+      }
+    ]
+  },
+  {
+    "user": "NGF0157",
+    "risk": 0.38904692496542814,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 5527,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 100.1012203201871
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 69.91098421552346
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.584308228906772
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.34721809002478854
+      }
+    ]
+  },
+  {
+    "user": "FOB0756",
+    "risk": 0.38894663436244625,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 3197,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 69.39458203480528
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 23.055796224218547
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7657884046224095
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.469431005660451
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.29333333333333333
+      }
+    ]
+  },
+  {
+    "user": "KMB0922",
+    "risk": 0.3859401429980947,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 6162,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 79.21136959114588
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 44.71671204330417
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7445139188104005
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.46104528911794146
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.29333333333333333
+      }
+    ]
+  },
+  {
+    "user": "RGG0064",
+    "risk": 0.3855839748566202,
+    "is_malicious": true,
+    "scenario": 1,
+    "len": 2582,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 154.58350600694163
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.6786539078479222
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.13333333333333333
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.06153846153846154
+      }
+    ]
+  },
+  {
+    "user": "MOH0273",
+    "risk": 0.38482667666079023,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 20697,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 119.65540328364716
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 97.68442572395392
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.6938370441216699
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.37333333333333335
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.30938187711617476
+      }
+    ]
+  },
+  {
     "user": "FFC0891",
-    "risk": 0.3985143534163344,
+    "risk": 0.38409263326247,
     "is_malicious": false,
     "scenario": 0,
     "len": 3447,
@@ -1878,375 +2157,11 @@
     ]
   },
   {
-    "user": "BDV0168",
-    "risk": 0.39577766031554484,
-    "is_malicious": true,
-    "scenario": 1,
-    "len": 3463,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 166.80328532909326
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 5.282486154642235
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.8595177510338593
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.21333333333333335
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.13389652314128903
-      }
-    ]
-  },
-  {
-    "user": "BRM0995",
-    "risk": 0.3937252024151239,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 10587,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 92.18452516024959
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 37.01375702539858
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 9.802581434685472
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.759757512853287
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.32000000000000006
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.26135172199983714
-      }
-    ]
-  },
-  {
-    "user": "CGB0637",
-    "risk": 0.3930080610648399,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 6646,
-    "rule_hits": [
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 114.27063829203271
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7841869668919854
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.361281723365371
-      }
-    ]
-  },
-  {
-    "user": "TDS0984",
-    "risk": 0.3923205998400116,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 9625,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 179.94072771951298
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 50.74527600968559
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 9.802581434685472
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7781818770360885
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.47198458252557873
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      }
-    ]
-  },
-  {
-    "user": "CQW0652",
-    "risk": 0.3883685121430216,
-    "is_malicious": true,
-    "scenario": 2,
-    "len": 4010,
-    "rule_hits": [
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 66.30442917940958
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.708988154934199
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.32000000000000006
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.3013699935587034
-      }
-    ]
-  },
-  {
-    "user": "HDH0928",
-    "risk": 0.38676726717421495,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 7932,
-    "rule_hits": [
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 141.36616101505638
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.568549125033869
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.2921209527690679
-      }
-    ]
-  },
-  {
-    "user": "FOB0756",
-    "risk": 0.3864738929123963,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 3197,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 69.39458203480528
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 23.055796224218547
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7657884046224095
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.469431005660451
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.29333333333333333
-      }
-    ]
-  },
-  {
-    "user": "NGF0157",
-    "risk": 0.3862683141608232,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 5507,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 100.1012203201871
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 67.7152600212682
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.584308228906772
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.34721809002478854
-      }
-    ]
-  },
-  {
-    "user": "KMB0922",
-    "risk": 0.3847622270505579,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 6162,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 79.21136959114588
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 44.71671204330417
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7445139188104005
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.46104528911794146
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.29333333333333333
-      }
-    ]
-  },
-  {
-    "user": "RGG0064",
-    "risk": 0.3843631743265482,
-    "is_malicious": true,
-    "scenario": 1,
-    "len": 2582,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 154.58350600694163
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.6786539078479222
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.13333333333333333
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.06153846153846154
-      }
-    ]
-  },
-  {
-    "user": "MYD0978",
-    "risk": 0.3789850710361464,
-    "is_malicious": true,
-    "scenario": 1,
-    "len": 4141,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 154.58350600694163
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 7.738702340109938
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.7900282421437731
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.21333333333333335
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.2062545847441165
-      }
-    ]
-  },
-  {
-    "user": "MOH0273",
-    "risk": 0.37839544445685824,
-    "is_malicious": false,
-    "scenario": 0,
-    "len": 20478,
-    "rule_hits": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 119.65540328364716
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 93.69605587202761
-      }
-    ],
-    "sim_top": [
-      {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.6938370441216699
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.30938187711617476
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.29333333333333333
-      }
-    ]
-  },
-  {
     "user": "MPT0376",
-    "risk": 0.3774914258616431,
+    "risk": 0.3789517592797629,
     "is_malicious": false,
     "scenario": 0,
-    "len": 6712,
+    "len": 6888,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -2254,7 +2169,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 95.87848196790142
+        "score": 100.06607927181713
       }
     ],
     "sim_top": [
@@ -2264,7 +2179,7 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.3466666666666667
+        "score": 0.4
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -2274,7 +2189,7 @@
   },
   {
     "user": "JTM0223",
-    "risk": 0.3772917749649749,
+    "risk": 0.3788033022258304,
     "is_malicious": true,
     "scenario": 3,
     "len": 2878,
@@ -2301,7 +2216,7 @@
   },
   {
     "user": "MCD0125",
-    "risk": 0.3764063668726062,
+    "risk": 0.37760020702640285,
     "is_malicious": false,
     "scenario": 0,
     "len": 2694,
@@ -2331,8 +2246,66 @@
     ]
   },
   {
+    "user": "CQW0652",
+    "risk": 0.37678229819442044,
+    "is_malicious": true,
+    "scenario": 2,
+    "len": 4084,
+    "rule_hits": [
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 68.20590345782664
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7063330104053802
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.32000000000000006
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.3013699935587034
+      }
+    ]
+  },
+  {
+    "user": "MYD0978",
+    "risk": 0.3747939952994769,
+    "is_malicious": true,
+    "scenario": 1,
+    "len": 4141,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 154.58350600694163
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 7.738702340109938
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.7900282421437731
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.21333333333333335
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.2062545847441165
+      }
+    ]
+  },
+  {
     "user": "JGT0221",
-    "risk": 0.376314732044116,
+    "risk": 0.3714944897102062,
     "is_malicious": true,
     "scenario": 3,
     "len": 3193,
@@ -2362,35 +2335,35 @@
     ]
   },
   {
-    "user": "RAB0589",
-    "risk": 0.3689867704554849,
-    "is_malicious": true,
-    "scenario": 1,
-    "len": 910,
+    "user": "HDH0928",
+    "risk": 0.3686531077754597,
+    "is_malicious": false,
+    "scenario": 0,
+    "len": 8245,
     "rule_hits": [
       {
-        "scenario": "S1_LEAK_VIA_USB",
-        "score": 134.55875758825624
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 146.51375956380357
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.49416640243715193
-      },
-      {
-        "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.18887396705373832
+        "score": 0.5518133586853033
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.10666666666666667
+        "score": 0.4
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.2921209527690679
       }
     ]
   },
   {
     "user": "PMV0850",
-    "risk": 0.36892928262250846,
+    "risk": 0.3685976147319426,
     "is_malicious": false,
     "scenario": 0,
     "len": 2655,
@@ -2421,7 +2394,7 @@
   },
   {
     "user": "FMG0527",
-    "risk": 0.3651804016625118,
+    "risk": 0.3673744894716361,
     "is_malicious": true,
     "scenario": 1,
     "len": 1388,
@@ -2447,8 +2420,35 @@
     ]
   },
   {
+    "user": "RAB0589",
+    "risk": 0.36671136864301207,
+    "is_malicious": true,
+    "scenario": 1,
+    "len": 910,
+    "rule_hits": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 134.55875758825624
+      }
+    ],
+    "sim_top": [
+      {
+        "scenario": "S1_LEAK_VIA_USB",
+        "score": 0.49416640243715193
+      },
+      {
+        "scenario": "S3_SYSADMIN_KEYLOG",
+        "score": 0.18887396705373832
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.10666666666666667
+      }
+    ]
+  },
+  {
     "user": "KPC0073",
-    "risk": 0.36380649444529767,
+    "risk": 0.36362201255031057,
     "is_malicious": true,
     "scenario": 1,
     "len": 1688,
@@ -2479,10 +2479,10 @@
   },
   {
     "user": "KKW0879",
-    "risk": 0.36062665474141287,
+    "risk": 0.36188625671201624,
     "is_malicious": false,
     "scenario": 0,
-    "len": 14126,
+    "len": 14132,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
@@ -2490,13 +2490,13 @@
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 52.246304116854574
+        "score": 53.12739358814549
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.6908954906351739
+        "score": 0.6878338410461546
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
@@ -2509,33 +2509,33 @@
     ]
   },
   {
-    "user": "ATE0869",
-    "risk": 0.35880593648660836,
+    "user": "GZC0735",
+    "risk": 0.3549729709458643,
     "is_malicious": false,
     "scenario": 0,
-    "len": 11712,
+    "len": 8292,
     "rule_hits": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 108.82470318789015
+        "score": 97.47889893157041
       },
       {
         "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 87.20350718536177
+        "score": 46.06050647083526
       }
     ],
     "sim_top": [
       {
         "scenario": "S1_LEAK_VIA_USB",
-        "score": 0.5068301905996412
-      },
-      {
-        "scenario": "S2_DEPARTING_DATA_THEFT",
-        "score": 0.4
+        "score": 0.6188300776009859
       },
       {
         "scenario": "S3_SYSADMIN_KEYLOG",
-        "score": 0.21976289116624043
+        "score": 0.3509707079497715
+      },
+      {
+        "scenario": "S2_DEPARTING_DATA_THEFT",
+        "score": 0.32000000000000006
       }
     ]
   }

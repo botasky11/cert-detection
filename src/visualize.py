@@ -16,7 +16,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, precision_recall_curve, auc
 
-OUT_DIR = "/home/user/webapp/outputs"
+from pathlib import Path as _Path
+
+PROJECT_ROOT = _Path(__file__).resolve().parent.parent
+OUT_DIR = str(PROJECT_ROOT / 'outputs')
 plt.rcParams['font.sans-serif']    = ['DejaVu Sans']
 plt.rcParams['axes.unicode_minus'] = False
 

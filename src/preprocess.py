@@ -13,10 +13,12 @@ import pickle
 import pandas as pd
 from collections import defaultdict
 from datetime import datetime
+from pathlib import Path
 from tqdm import tqdm
 
-DATA_DIR = "/home/user/webapp/data/cert42/r4.2"
-OUTPUT_DIR = "/home/user/webapp/outputs"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = str(PROJECT_ROOT / 'data' / 'r4.2')
+OUTPUT_DIR = str(PROJECT_ROOT / 'outputs')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ======================== 行为 token 词汇表 ========================
@@ -171,8 +173,18 @@ def classify_url(url):
 
 def stream_http_events():
     """为节省时间和内存，仅保留命中敏感关键词的 HTTP 行为。"""
-    print("[Preprocess] Streaming http_slim.csv (sensitive URLs only) ...")
-    chunks = pd.read_csv(os.path.join(DATA_DIR, 'http_slim.csv'),
+    # 优先使用 http_slim.csv, 不存在则回退到 http.csv
+    slim_path = os.path.join(DATA_DIR, 'http_slim.csv')
+    full_path = os.path.join(DATA_DIR, 'http.csv')
+    if os.path.exists(slim_path):
+        http_path = slim_path
+    elif os.path.exists(full_path):
+        http_path = full_path
+    else:
+        print("[Preprocess] WARNING: neither http_slim.csv nor http.csv found, skipping.")
+        return
+    print(f"[Preprocess] Streaming {os.path.basename(http_path)} (sensitive URLs only) ...")
+    chunks = pd.read_csv(http_path,
                          chunksize=500_000,
                          usecols=['date', 'user', 'pc', 'url'])
     for ch in chunks:

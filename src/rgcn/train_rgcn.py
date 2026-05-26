@@ -1,5 +1,5 @@
 """
-在 r4.2-mini-v1 上训练并评估 R-GCN.
+在 r4.2 full dataset 上训练并评估 R-GCN.
 
 设定:
   * 半监督二分类: user 节点中 70 mal / 100 benign
@@ -164,7 +164,7 @@ def main():
     ap.add_argument('--verbose', action='store_true')
     args = ap.parse_args()
 
-    print('========= R-GCN training on r4.2-mini-v1 =========')
+    print('========= R-GCN training on r4.2 full dataset =========')
     print(f'config: {vars(args)}')
 
     set_seed(args.seed)
@@ -218,24 +218,39 @@ def main():
     overall_auc = roc_auc_score(labels, oof_scores)
     overall_ap  = average_precision_score(labels, oof_scores)
     topk = {}
-    for k in (20, 40, 100):
+    for k in (10, 20, 30, 50, 70, 100):
         prec, rec, hit = top_k_metrics(oof_scores, labels, k)
         topk[k] = {'precision': round(prec, 4),
                    'recall':    round(rec, 4),
                    'hit':       hit}
 
-    print('\n========= OOF metrics (170 users) =========')
+    print(f'\n========= OOF metrics ({N} users) =========')
     print(f'  ROC-AUC : {overall_auc:.4f}')
     print(f'  PR-AUC  : {overall_ap:.4f}')
     for k, m in topk.items():
         print(f'  Top-{k:<3} : P={m["precision"]:.4f}  R={m["recall"]:.4f}  hits={m["hit"]}/{n_mal}')
 
+    # ------ Scenario-level recall ------
+    from build_ground_truth import get_malicious_users
+    mal_scenarios = get_malicious_users()  # {user: scenario_id}
+    user_ids = graph['node_ids']['user']
+    order = np.argsort(-oof_scores)
+    scenario_recall = {}
+    for s_id in [1, 2, 3]:
+        s_users = {u for u, s in mal_scenarios.items() if s == s_id}
+        s_total = len(s_users)
+        for k in [70, 100]:
+            topk_users = set(user_ids[i] for i in order[:k])
+            s_hit = len(s_users & topk_users)
+            scenario_recall[f'S{s_id}_top{k}_recall'] = round(s_hit / max(s_total, 1), 4)
+    print('\n  Scenario-level recall:')
+    for key, val in scenario_recall.items():
+        print(f'    {key}: {val:.4f}')
+
     # ------ 保存结果 ------
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     # 按分数降序输出 ranking, 方便人工审查
-    user_ids = graph['node_ids']['user']
-    order = np.argsort(-oof_scores)
     ranking = [
         {'rank': r + 1, 'user': user_ids[i],
          'score': float(oof_scores[i]), 'label': int(labels[i])}
@@ -253,13 +268,14 @@ def main():
             'pr_auc':  float(overall_ap),
             'top_k':   topk,
         },
+        'scenario_recall': scenario_recall,
         'ranking_top30': ranking[:30],
     }
     out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False),
                         encoding='utf-8')
     print(f'\nSaved to {out_path}')
 
-    # ranking csv (含全部 170 用户)
+    # ranking csv (含全部 all users)
     csv_path = out_path.with_suffix('.csv')
     with csv_path.open('w', encoding='utf-8') as f:
         f.write('rank,user,score,label\n')

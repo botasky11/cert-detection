@@ -36,7 +36,7 @@ from build_ground_truth import get_all_malicious_user_ids  # noqa: E402
 # ---------------------------------------------------------------------------
 # 路径配置
 # ---------------------------------------------------------------------------
-RAW_DIR = Path('/home/user/webapp/data/cert42/r4.2')
+RAW_DIR = Path(__file__).resolve().parent.parent / 'data' / 'r4.2'
 DEFAULT_OUT_NAME = 'r4.2-mini-v1'
 
 # 待抽取的事件源 (file_name, 是否使用 csv 模块读取而不是按行 split)

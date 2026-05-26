@@ -1,5 +1,5 @@
 """
-从 r4.2-mini-v1 CSV 构建异构图, 给 R-GCN 用。
+从 r4.2 full dataset CSV 构建异构图, 给 R-GCN 用。
 
 ==== 图结构 ====
 节点类型 (4):
@@ -62,8 +62,9 @@ from build_ground_truth import get_all_malicious_user_ids  # noqa: E402
 # ---------------------------------------------------------------------------
 # 全局配置
 # ---------------------------------------------------------------------------
-DATA_DIR = Path('/home/user/webapp/data/cert42/r4.2-mini-v1')
-OUT_DIR = Path('/home/user/webapp/outputs/rgcn')
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+DATA_DIR = PROJECT_ROOT / 'data' / 'r4.2'
+OUT_DIR = PROJECT_ROOT / 'outputs' / 'rgcn'
 
 # 工作日 7:00-18:00 视作 WH (work hours), 其它为 AH (after hours).
 WORK_DAYS = {0, 1, 2, 3, 4}   # Mon..Fri
@@ -222,11 +223,22 @@ def scan_file(path: Path, users: set[str], user_stats: dict):
 
 
 # ---------------------------------------------------------------------------
-# 第 4 步: http_slim.csv -> http_visit 边 (3.6M 行, 流式)
+# 第 4 步: http_slim.csv / http.csv -> http_visit 边 (流式)
 # ---------------------------------------------------------------------------
-def scan_http(path: Path, users: set[str], user_stats: dict):
+def scan_http(data_dir: Path, users: set[str], user_stats: dict):
+    # Try http_slim.csv first, fall back to http.csv
+    slim_path = data_dir / 'http_slim.csv'
+    full_path = data_dir / 'http.csv'
+    if slim_path.exists():
+        path = slim_path
+    elif full_path.exists():
+        path = full_path
+    else:
+        print('[4] WARNING: neither http_slim.csv nor http.csv found, skipping')
+        return Counter()
+
     edges: Counter = Counter()
-    print(f'[4] scan {path.name} (streaming, ~3.6M rows)', flush=True)
+    print(f'[4] scan {path.name} (streaming)', flush=True)
     t0 = time.time()
     # http_slim 没有 quoted 字段 (url 中没逗号? 不一定, 但实测 split(',',4) 能拿到)
     # 用 reader 直接读会被 ','在 url 中的 instances 影响, 但概率极低;
@@ -383,7 +395,7 @@ def main():
     users, pcs, logon_wh, logon_ah, user_stats = scan_logon(data_dir / 'logon.csv')
     usb_wh, usb_ah = scan_device(data_dir / 'device.csv', users, pcs, user_stats)
     file_edges = scan_file(data_dir / 'file.csv', users, user_stats)
-    http_edges = scan_http(data_dir / 'http_slim.csv', users, user_stats)
+    http_edges = scan_http(data_dir, users, user_stats)
 
     graph = assemble_graph(
         users, pcs, user_stats,

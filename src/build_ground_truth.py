@@ -60,11 +60,15 @@ def get_all_malicious_user_ids():
     return set(MALICIOUS_USERS.keys())
 
 
-def load_from_official_csv(path='/home/user/webapp/data/upload_files/insiders.csv'):
+def load_from_official_csv(path=None):
     """
     可选: 从官方 insiders.csv 直接读取 (要求 pandas).
     用作单元测试与本文件硬编码列表的一致性校验.
     """
+    from pathlib import Path
+    if path is None:
+        _proj = Path(__file__).resolve().parent.parent
+        path = _proj / 'data' / 'r4.2' / 'insiders.csv'
     import pandas as pd
     df = pd.read_csv(path, dtype={'dataset': str})
     r42 = df[df['dataset'] == '4.2']
