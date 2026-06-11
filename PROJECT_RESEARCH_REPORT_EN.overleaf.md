@@ -1,21 +1,21 @@
-# Insider Threat Detection on CMU-CERT r4.2: A Comparative Study of Behavioral Sequence Matching and Heterogeneous Graph Neural Networks
-
-Report Date: 2026-05-26
-
+---
+title: "Insider Threat Detection on CMU-CERT r4.2: A Comparative Study of Behavioral Sequence Matching and Heterogeneous Graph Neural Networks"
+author: "CMU-CERT r4.2 Insider Threat Detection Project"
+date: "2026-05-26"
 ---
 
-## Abstract
+# Abstract {.unnumbered}
 
 Insider threat detection faces fundamental challenges including label scarcity, long behavioral time spans, stealthy attack chains, and high false-positive costs. This project uses the CMU-CERT r4.2 dataset (~16 GB / 1,000 employees / 17 months of logs / 70 malicious users) to implement and compare two insider threat detection approaches:
 
-- **Approach 1: N-gram Template-Based Behavioral Sequence Matching** — abstracts multi-source logs into unified behavioral token time series and generates user-level risk scores through a weighted fusion of four complementary detectors (red-team template matching, N-gram language model anomaly, malicious signature similarity, and peer rarity deviation);
-- **Approach 2: R-GCN Heterogeneous Graph Detection** — constructs a heterogeneous graph over users, PCs, file types, and URL categories, then applies Relational Graph Convolutional Networks (R-GCN) for semi-supervised node classification, automatically learning structural features that distinguish malicious from benign users.
+- **Approach 1: N-gram Template-Based Behavioral Sequence Matching** -- abstracts multi-source logs into unified behavioral token time series and generates user-level risk scores through a weighted fusion of four complementary detectors (red-team template matching, N-gram language model anomaly, malicious signature similarity, and peer rarity deviation);
+- **Approach 2: R-GCN Heterogeneous Graph Detection** -- constructs a heterogeneous graph over users, PCs, file types, and URL categories, then applies Relational Graph Convolutional Networks (R-GCN) for semi-supervised node classification, automatically learning structural features that distinguish malicious from benign users.
 
 Comparative experiments on the full r4.2 dataset demonstrate that R-GCN comprehensively outperforms the N-gram approach across all core metrics: ROC-AUC reaches **0.9898** (vs. 0.9041 for N-gram), PR-AUC reaches **0.8358** (vs. 0.3257), and Top-100 Recall reaches **98.57%** (vs. 52.86%). R-GCN shows particularly striking improvement on the hardest-to-detect S2 scenario (job-hunting + email exfiltration), where Top-100 Recall jumps from 16.67% to 96.67%. However, the N-gram approach retains unique advantages in interpretability, as each high-risk user can be traced back to specific rule templates and behavioral patterns.
 
-## 1. Background and Motivation
+# Background and Motivation
 
-Enterprise insider threats typically do not manifest as single isolated events, but rather as a set of temporally correlated behaviors — such as after-hours logins, removable storage device connections, visits to leak sites, copying sensitive files, or sending attachments to external email addresses. Single-point anomaly detection is easily disrupted by office noise, while purely supervised learning requires large amounts of high-quality labels that are difficult to obtain in real-world environments.
+Enterprise insider threats typically do not manifest as single isolated events, but rather as a set of temporally correlated behaviors -- such as after-hours logins, removable storage device connections, visits to leak sites, copying sensitive files, or sending attachments to external email addresses. Single-point anomaly detection is easily disrupted by office noise, while purely supervised learning requires large amounts of high-quality labels that are difficult to obtain in real-world environments.
 
 CMU-CERT r4.2 is a widely used simulated dataset in insider threat detection research, containing multi-month, multi-source logs with red-team-injected malicious user behaviors. This dataset is well-suited for studying the following questions:
 
@@ -27,9 +27,9 @@ CMU-CERT r4.2 is a widely used simulated dataset in insider threat detection res
 
 This project pursues two technical approaches: a domain-knowledge-driven "behavioral sequence matching" method and a data-driven "heterogeneous graph neural network" method, conducting a rigorous comparison on the same dataset to inform practical deployment decisions.
 
-## 2. Dataset and Threat Scenarios
+# Dataset and Threat Scenarios
 
-### 2.1 Dataset Overview
+## Dataset Overview
 
 The project is based on the CMU-CERT r4.2 dataset. The raw data is approximately 16 GB, covering 1,000 employees over approximately 17 months of enterprise activity logs:
 
@@ -43,7 +43,7 @@ The project is based on the CMU-CERT r4.2 dataset. The raw data is approximately
 | LDAP/ | ~2.5 MB | user, role, department, team | Employee position and organizational attributes (monthly snapshots) |
 | insiders.csv | 14 KB | dataset, scenario, user, start, end | Official malicious user ground truth |
 
-### 2.2 Threat Scenario Definitions
+## Threat Scenario Definitions
 
 The project uses the r4.2 malicious user list verified against the official `insiders.csv` in `src/build_ground_truth.py`, totaling **70 unique malicious users** across three typical scenarios:
 
@@ -55,21 +55,21 @@ The project uses the r4.2 malicious user list verified against the official `ins
 
 The three scenarios are mutually exclusive, covering 70 malicious users and 930 benign users in total.
 
-## 3. Data Preprocessing and Behavioral Tokenization
+# Data Preprocessing and Behavioral Tokenization
 
-### 3.1 Unified Preprocessing Pipeline
+## Unified Preprocessing Pipeline
 
 The preprocessing script is `src/preprocess.py`. Its core idea is to stream-read multi-source logs and unify them into per-user, chronologically-ordered behavioral token sequences.
 
 **Temporal Context Segmentation**:
-- Work Hours (WH): Monday through Friday, 07:00–18:00;
+- Work Hours (WH): Monday through Friday, 07:00-18:00;
 - After Hours (AH): weekends, late nights, early mornings, and all other non-work periods.
 
 **User Context Identification**:
 - The most frequently used PC for each user is identified from logon logs as their "primary PC";
 - Login events are differentiated into `LOGON_WH_OWN` (work-hours login on own PC), `LOGON_AH_OTHER` (after-hours login on another's PC), etc.
 
-### 3.2 Behavioral Token Vocabulary
+## Behavioral Token Vocabulary
 
 The project defines approximately 30 behavioral token types. Representative examples:
 
@@ -86,13 +86,13 @@ The project defines approximately 30 behavioral token types. Representative exam
 
 Complete preprocessing output: **1,000 users, 4,779,378 events**, saved as `outputs/user_sequences.pkl` and `outputs/user_daily_seq.pkl`.
 
-### 3.3 HTTP Data Slimming
+## HTTP Data Slimming
 
-The raw `http.csv` file is 14.5 GB, primarily due to the bulky `content` field. The project generates a slim version via `src/generate_http_slim.py` — `http_slim.csv` (4.1 GB, 28,434,423 rows) — retaining only the five columns `id, date, user, pc, url` for use by both algorithms.
+The raw `http.csv` file is 14.5 GB, primarily due to the bulky `content` field. The project generates a slim version via `src/generate_http_slim.py` -- `http_slim.csv` (4.1 GB, 28,434,423 rows) -- retaining only the five columns `id, date, user, pc, url` for use by both algorithms.
 
-## 4. Approach 1: N-gram Template-Based Behavioral Sequence Matching
+# Approach 1: N-gram Template-Based Behavioral Sequence Matching
 
-### 4.1 Method Overview
+## Method Overview
 
 This approach is defined in `src/sequence_matching.py`. The overall architecture is:
 
@@ -107,66 +107,66 @@ Multi-source Logs
 
 The system consists of four complementary detectors, all following a "higher score = more suspicious" convention. Outputs are min-max normalized and linearly fused into a final risk score.
 
-### 4.2 Threat Weight Design
+## Threat Weight Design
 
 Based on the prevalence ratio of each token between malicious and benign users, the project assigns data-driven threat weights (approximating `log(P(t|malicious) / P(t|benign))`):
 
 | Token | Weight | Mal/Ben Ratio | Interpretation |
 | --- | ---: | ---: | --- |
-| `HTTP_LEAK_AH/WH` | 8.0 | 39–52× | Visiting leak sites; very strong malicious signal |
-| `HTTP_KEYLOG_AH/WH` | 8.0 | 38× | Visiting keylogger sites; very strong malicious signal |
-| `USB_CONN_AH` | 2.5 | 5.3× | After-hours removable device connection |
-| `FILE_EXEC_AH` | 2.0 | 3.5× | After-hours executable file access |
-| `LOGON_AH_OTHER` | 2.0 | 1.7× | After-hours login on a non-primary PC |
-| `HTTP_JOBHUNT_WH` | 0.0 | 1.1× | Job-hunting sites appear in 83% of benign users; extremely low discriminative power |
+| `HTTP_LEAK_AH/WH` | 8.0 | 39-52x | Visiting leak sites; very strong malicious signal |
+| `HTTP_KEYLOG_AH/WH` | 8.0 | 38x | Visiting keylogger sites; very strong malicious signal |
+| `USB_CONN_AH` | 2.5 | 5.3x | After-hours removable device connection |
+| `FILE_EXEC_AH` | 2.0 | 3.5x | After-hours executable file access |
+| `LOGON_AH_OTHER` | 2.0 | 1.7x | After-hours login on a non-primary PC |
+| `HTTP_JOBHUNT_WH` | 0.0 | 1.1x | Job-hunting sites appear in 83% of benign users; extremely low discriminative power |
 
-### 4.3 The Four Detectors
+## The Four Detectors
 
 **(1) PatternRule: Red-Team Playbook Ordered Subsequence Matching**
 
 Encodes three red-team scenarios into 21 behavioral templates. For example, S1 includes combinations such as `[LOGON_AH_OWN, USB_CONN_AH, FILE_DOC_AH]`. Performs ordered subsequence matching within a sliding window (default size 15) with non-overlapping counting:
 
 ```text
-score(pattern) = log(1 + hits) × len(pattern)^1.5 × (1 + Σ threat_weight(token))
+score(pattern) = log(1 + hits) x len(pattern)^1.5 x (1 + sum threat_weight(token))
 ```
 
 **(2) NGramAnomaly: Benign Behavior Language Model**
 
-Trains a 3-gram language model (additive smoothing α=0.5) on 70% of benign users and computes the perplexity of each test user's sequence. Higher perplexity indicates greater deviation from normal behavioral patterns.
+Trains a 3-gram language model (additive smoothing alpha=0.5) on 70% of benign users and computes the perplexity of each test user's sequence. Higher perplexity indicates greater deviation from normal behavioral patterns.
 
 **(3) SequenceSimilarity: Malicious Signature Similarity**
 
 Concatenates each scenario's template tokens into malicious signature sequences and computes the Longest Common Subsequence (LCS) ratio between the user's behavioral sequence and the signatures, with weighted counting of high-sensitivity token occurrences:
 
 ```text
-score = 0.4 × LCS_ratio + 0.6 × weighted_high_sensitive_hit
+score = 0.4 x LCS_ratio + 0.6 x weighted_high_sensitive_hit
 ```
 
 **(4) PeerDeviation: High-Risk Token Peer Rarity**
 
-Focuses exclusively on the 9 token types with threat weight ≥ 1.5, computing IDF-weighted deviation scores:
+Focuses exclusively on the 9 token types with threat weight >= 1.5, computing IDF-weighted deviation scores:
 
 ```text
-score = Σ log(1 + count_u(token)) × IDF(token) × threat_weight(token)
+score = sum log(1 + count_u(token)) x IDF(token) x threat_weight(token)
 ```
 
-### 4.4 Fusion Strategy
+## Fusion Strategy
 
 The four detector outputs undergo min-max normalization followed by linear fusion:
 
 ```text
-R(u) = 0.40 × z(rule) + 0.20 × z(perplexity) + 0.25 × z(similarity) + 0.15 × z(peer)
+R(u) = 0.40 x z(rule) + 0.20 x z(perplexity) + 0.25 x z(similarity) + 0.15 x z(peer)
 ```
 
 Weights are manually specified, emphasizing rule matching and similarity signals.
 
-## 5. Approach 2: R-GCN Heterogeneous Graph Detection
+# Approach 2: R-GCN Heterogeneous Graph Detection
 
-### 5.1 Method Overview
+## Method Overview
 
 This approach formulates insider threat detection as a node classification problem on a heterogeneous graph, using Relational Graph Convolutional Networks (R-GCN) to automatically learn user-level malicious features from graph structure. The code resides in `src/rgcn/`.
 
-### 5.2 Heterogeneous Graph Construction
+## Heterogeneous Graph Construction
 
 The graph construction script is `src/rgcn/build_graph.py`, which builds a heterogeneous graph from the full r4.2 data containing 4 node types and 6 relation types:
 
@@ -176,19 +176,19 @@ The graph construction script is `src/rgcn/build_graph.py`, which builds a heter
 | --- | ---: | --- |
 | user | 1,000 | Employee nodes |
 | pc | 1,003 | Workstation nodes |
-| file_type | 6 | File category nodes: (doc/exec/other) × (WH/AH) |
-| url_cat | 8 | URL category nodes: (LEAK/KEYLOG/JOBHUNT/OTHER) × (WH/AH) |
+| file_type | 6 | File category nodes: (doc/exec/other) x (WH/AH) |
+| url_cat | 8 | URL category nodes: (LEAK/KEYLOG/JOBHUNT/OTHER) x (WH/AH) |
 
 **Relation Types (6 types, 38,568 total edges)**:
 
 | Relation | Direction | Edges | Meaning |
 | --- | --- | ---: | --- |
-| logon_wh | user → pc | 8,074 | Work-hours logins |
-| logon_ah | user → pc | 20,144 | After-hours logins |
-| usb_wh | user → pc | 1,441 | Work-hours USB connections |
-| usb_ah | user → pc | 4,639 | After-hours USB connections |
-| file_op | user → file_type | 1,063 | File operations |
-| http_visit | user → url_cat | 3,207 | HTTP browsing |
+| logon_wh | user -> pc | 8,074 | Work-hours logins |
+| logon_ah | user -> pc | 20,144 | After-hours logins |
+| usb_wh | user -> pc | 1,441 | Work-hours USB connections |
+| usb_ah | user -> pc | 4,639 | After-hours USB connections |
+| file_op | user -> file_type | 1,063 | File operations |
+| http_visit | user -> url_cat | 3,207 | HTTP browsing |
 
 Each edge carries a weight `w = log(1 + count)`, and multiple occurrences of the same `(src, dst, rel)` are merged. Reverse edges are automatically added during training, giving the R-GCN 12 relation types in total.
 
@@ -202,41 +202,41 @@ Each edge carries a weight `w = log(1 + count)`, and multiple occurrences of the
 
 Features are standardized using RobustScaler (subtract median / divide by IQR) and clipped to [-5, 5].
 
-### 5.3 R-GCN Model Architecture
+## R-GCN Model Architecture
 
 The model is implemented in `src/rgcn/rgcn_model.py`, following the R-GCN framework of Schlichtkrull et al. (ESWC 2018) in pure PyTorch (no DGL/PyG dependency).
 
 **Core Formula**:
 
 ```text
-h_v^(l+1) = σ( W_self × h_v^(l) + Σ_r Σ_{u∈N_r(v)} (w_{u,v,r} / c_{v,r}) × W_r × h_u^(l) )
+h_v^(l+1) = sigma( W_self x h_v^(l) + sum_r sum_{uinN_r(v)} (w_{u,v,r} / c_{v,r}) x W_r x h_u^(l) )
 ```
 
-where `W_r` employs basis decomposition: `W_r = Σ_{b=1..B} a_{rb} × V_b`, sharing B=4 basis matrices across 12 relations to effectively reduce parameter count.
+where `W_r` employs basis decomposition: `W_r = sum_{b=1..B} a_{rb} x V_b`, sharing B=4 basis matrices across 12 relations to effectively reduce parameter count.
 
 **Model Structure**:
 
 ```text
-user: Linear(6, 64)  ─┐
-pc:   Embedding(64)   ─┤
-file: Embedding(64)   ─┼──→ R-GCN Layer 1 (64→64, ReLU) ──→ R-GCN Layer 2 (64→64)
-url:  Embedding(64)   ─┘                                          │
-                                                                   ↓
-                                                    Linear(64→32) → ReLU → Linear(32→1)
-                                                    (user nodes only)    → sigmoid → P(malicious)
+user: Linear(6, 64)  -+
+pc:   Embedding(64)   -+
+file: Embedding(64)   -+---> R-GCN Layer 1 (64->64, ReLU) ---> R-GCN Layer 2 (64->64)
+url:  Embedding(64)   -+                                          |
+                                                                   v
+                                                    Linear(64->32) -> ReLU -> Linear(32->1)
+                                                    (user nodes only)    -> sigmoid -> P(malicious)
 ```
 
-### 5.4 Training Strategy
+## Training Strategy
 
 - **Semi-supervised Transductive**: all nodes participate in message passing, but loss is computed only on training nodes;
 - **5-fold StratifiedKFold** cross-validation, preserving malicious/benign ratio in each fold;
-- **Class Imbalance Handling**: BCEWithLogitsLoss with `pos_weight = #neg / #pos ≈ 13.3`;
+- **Class Imbalance Handling**: BCEWithLogitsLoss with `pos_weight = #neg / #pos approx. 13.3`;
 - **Optimizer**: AdamW, lr=0.01, weight_decay=5e-4;
 - **Early Stopping**: patience=50 epochs, monitoring validation ROC-AUC;
 - **Gradient Clipping**: max_norm=2.0;
 - **Out-of-Fold (OOF) Prediction**: each user receives a score from the fold where it served as validation, then all scores are aggregated for overall metrics.
 
-### 5.5 Hyperparameter Configuration
+## Hyperparameter Configuration
 
 | Parameter | Value | Description |
 | --- | --- | --- |
@@ -250,9 +250,9 @@ url:  Embedding(64)   ─┘                                          │
 | patience | 50 | Early stopping patience |
 | n_splits | 5 | Cross-validation folds |
 
-## 6. Experimental Design
+# Experimental Design
 
-### 6.1 Evaluation Framework
+## Evaluation Framework
 
 Both algorithms are evaluated on the identical dataset:
 
@@ -264,16 +264,16 @@ Both algorithms are evaluated on the identical dataset:
 | Label Usage | Evaluation only (unsupervised scoring) | Training binary classifier (semi-supervised) |
 | Ground Truth | 70 malicious users (S1:30, S2:30, S3:10) | 70 malicious users (S1:30, S2:30, S3:10) |
 
-### 6.2 Evaluation Metrics
+## Evaluation Metrics
 
 - **ROC-AUC**: True positive rate vs. false positive rate trade-off across thresholds;
 - **PR-AUC**: Particularly informative under sparse positive samples (7%), reflecting practical investigation difficulty;
 - **Top-K Precision/Recall** (K=10, 20, 30, 50, 70, 100): Simulates the "prioritize reviewing the top K users" scenario in security operations;
 - **Scenario-Level Recall**: Per-scenario (S1/S2/S3) recall within Top-70 and Top-100.
 
-## 7. Experimental Results
+# Experimental Results
 
-### 7.1 Overall Performance Comparison
+## Overall Performance Comparison
 
 | Metric | N-gram | R-GCN | R-GCN Improvement |
 | --- | ---: | ---: | ---: |
@@ -282,7 +282,7 @@ Both algorithms are evaluated on the identical dataset:
 
 R-GCN leads comprehensively across both core metrics. The PR-AUC gap is especially notable (0.33 vs. 0.84), indicating that R-GCN maintains high precision even at elevated recall levels, whereas the N-gram approach suffers rapid precision degradation when pursuing high recall.
 
-The R-GCN 5-fold cross-validation results are also highly stable: per-fold AUCs are [0.9981, 0.9923, 0.9939, 0.9866, 0.9885], mean **0.9919 ± 0.0041**.
+The R-GCN 5-fold cross-validation results are also highly stable: per-fold AUCs are [0.9981, 0.9923, 0.9939, 0.9866, 0.9885], mean **0.9919 +/- 0.0041**.
 
 ![ROC Curve Comparison](outputs/comparison/fig_roc_comparison.png)
 
@@ -292,7 +292,7 @@ Figure 1 shows the ROC curves of the two approaches. The R-GCN curve stays close
 
 Figure 2 shows the Precision-Recall curves. Since malicious users account for only 7% of all users, PR curves better reflect the practical investigation burden; R-GCN remains substantially above N-gram, especially in high-recall regions.
 
-### 7.2 Top-K Investigation Effectiveness Comparison
+## Top-K Investigation Effectiveness Comparison
 
 In security operations, analysts typically prioritize the highest-ranked users, making Top-K metrics more practically relevant than classification thresholds.
 
@@ -314,7 +314,7 @@ Key findings:
 
 Figure 3 compares Top-K precision and recall. R-GCN outperforms N-gram at every K from Top-10 to Top-100, reaching 80% recall by Top-70, which is especially useful when analysts can only review a limited number of users.
 
-### 7.3 Scenario-Level Detection Comparison
+## Scenario-Level Detection Comparison
 
 | Scenario | Description | Users | N-gram Top-70 | R-GCN Top-70 | N-gram Top-100 | R-GCN Top-100 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
@@ -322,7 +322,7 @@ Figure 3 compares Top-K precision and recall. R-GCN outperforms N-gram at every 
 | S2 | Job-Hunt + Email Exfil | 30 | 0.0667 | **0.8667** | 0.1667 | **0.9667** |
 | S3 | Keylogger | 10 | 0.5000 | **0.7000** | 0.7000 | **1.0000** |
 
-**The S2 scenario shows the most striking difference**: N-gram detects only 16.67% of S2 malicious users in the Top-100 (5/30), while R-GCN detects 96.67% (29/30). This is because S2 behavioral features (job-site browsing + document emailing) heavily overlap with benign users — 83% of benign users also have job-hunting site visit records. The N-gram approach sets the weight of `HTTP_JOBHUNT_WH` to 0 (treating it as noise), causing S2 detection to rely almost entirely on weak signals. In contrast, R-GCN automatically learns finer-grained discriminative features from user-PC-URL interaction patterns in the graph structure.
+**The S2 scenario shows the most striking difference**: N-gram detects only 16.67% of S2 malicious users in the Top-100 (5/30), while R-GCN detects 96.67% (29/30). This is because S2 behavioral features (job-site browsing + document emailing) heavily overlap with benign users -- 83% of benign users also have job-hunting site visit records. The N-gram approach sets the weight of `HTTP_JOBHUNT_WH` to 0 (treating it as noise), causing S2 detection to rely almost entirely on weak signals. In contrast, R-GCN automatically learns finer-grained discriminative features from user-PC-URL interaction patterns in the graph structure.
 
 S1 and S3 scenarios both achieve 100% recall within R-GCN's Top-100.
 
@@ -330,9 +330,9 @@ S1 and S3 scenarios both achieve 100% recall within R-GCN's Top-100.
 
 Figure 4 compares scenario-level Top-70 and Top-100 recall. The S2 improvement is the most pronounced, showing that heterogeneous graph structure can compensate for weak token-level signals.
 
-### 7.4 N-gram Approach Detailed Results
+## N-gram Approach Detailed Results
 
-#### 7.4.1 Evaluation Set vs. Full Dataset Comparison
+### Evaluation Set vs. Full Dataset Comparison
 
 | Metric | Full 1,000 Users | Held-Out Evaluation Set (349 Users) |
 | --- | ---: | ---: |
@@ -353,15 +353,15 @@ Figure 5 shows the N-gram approach's standalone ROC and PR curves. The method ha
 
 Figure 6 shows the N-gram approach's Top-K trend. Recall increases as K grows, but precision fluctuates noticeably, reflecting false positives among benign but highly active users.
 
-#### 7.4.2 Risk Score Distribution
+### Risk Score Distribution
 
-Among all users, benign users have a mean risk score of 0.1176 (median 0.0870), while malicious users have a mean of 0.3304 (median 0.3250). The two distributions show some separation, but with considerable overlap — the highest benign score reaches 0.7927, contributing to lower precision.
+Among all users, benign users have a mean risk score of 0.1176 (median 0.0870), while malicious users have a mean of 0.3304 (median 0.3250). The two distributions show some separation, but with considerable overlap -- the highest benign score reaches 0.7927, contributing to lower precision.
 
 ![N-gram Risk Score Distribution](outputs/fig_risk_distribution.png)
 
 Figure 7 shows the N-gram risk score distribution. Malicious users shift to the right overall, but benign and malicious distributions still overlap substantially, limiting Top-K precision.
 
-#### 7.4.3 Detector Contribution Analysis
+### Detector Contribution Analysis
 
 Among the N-gram approach's Top-20 highest-risk users, 5 are true malicious users:
 - CCA0046 (S3, rank 1): PatternRule, SequenceSimilarity, and PeerDeviation all significantly elevated;
@@ -382,9 +382,9 @@ Figure 9 shows N-gram scenario coverage within the Top-80 users. S1 and S3 rule 
 
 Figure 10 shows the rank distribution of all 70 malicious users under the N-gram full-user ranking. Earlier ranks are more useful for manual investigation; S2 users tend to appear later and remain the main optimization target.
 
-### 7.5 R-GCN Approach Detailed Results
+## R-GCN Approach Detailed Results
 
-#### 7.5.1 Cross-Validation Stability
+### Cross-Validation Stability
 
 | Fold | Training Set | Validation Set | Val AUC | Best Epoch |
 | ---: | --- | --- | ---: | ---: |
@@ -393,11 +393,11 @@ Figure 10 shows the rank distribution of all 70 malicious users under the N-gram
 | 3 | 800 (56 mal / 744 ben) | 200 (14 mal / 186 ben) | 0.9939 | 22 |
 | 4 | 800 (56 mal / 744 ben) | 200 (14 mal / 186 ben) | 0.9866 | 29 |
 | 5 | 800 (56 mal / 744 ben) | 200 (14 mal / 186 ben) | 0.9885 | 37 |
-| **Mean ± Std** | | | **0.9919 ± 0.0041** | |
+| **Mean +/- Std** | | | **0.9919 +/- 0.0041** | |
 
-All fold AUCs exceed 0.98 with a standard deviation of only 0.004, demonstrating stable performance across different data splits. Early stopping epochs concentrate in the 22–37 range, indicating rapid convergence.
+All fold AUCs exceed 0.98 with a standard deviation of only 0.004, demonstrating stable performance across different data splits. Early stopping epochs concentrate in the 22-37 range, indicating rapid convergence.
 
-#### 7.5.2 OOF Ranking Analysis
+### OOF Ranking Analysis
 
 All of R-GCN's Top-10 users are malicious (100% precision), and only 4 benign users appear among the top 30. The highest-scoring malicious user (JRG0207) achieves a predicted probability of 0.9995.
 
@@ -407,9 +407,9 @@ Within the Top-100, R-GCN identifies 69/70 malicious users; the single missed us
 
 Figure 11 compares the risk score distributions of the two approaches. R-GCN separates benign and malicious users more clearly, with malicious users concentrated in the high-score region; N-gram shows more overlap, leading to more benign users mixed into the high-risk list.
 
-## 8. Performance Difference Analysis
+# Performance Difference Analysis
 
-### 8.1 Sources of R-GCN's Advantage
+## Sources of R-GCN's Advantage
 
 1. **Graph Structural Information**: R-GCN leverages relationships among users, PCs, files, and URLs through message passing. For example, if multiple malicious users share certain PCs or access the same sensitive URL categories, these structural patterns propagate through graph convolutions, enhancing classification of neighboring nodes.
 
@@ -419,7 +419,7 @@ Figure 11 compares the risk score distributions of the two approaches. R-GCN sep
 
 4. **Semi-supervised Learning Paradigm**: R-GCN fully leverages the 70 known malicious labels for supervised training, whereas the N-gram approach is essentially unsupervised (fitting baselines only on benign users), underutilizing known malicious patterns.
 
-### 8.2 Unique Advantages of the N-gram Approach
+## Unique Advantages of the N-gram Approach
 
 Despite R-GCN's comprehensive numerical superiority, the N-gram approach retains irreplaceable value:
 
@@ -431,7 +431,7 @@ Despite R-GCN's comprehensive numerical superiority, the N-gram approach retains
 
 4. **Computational Efficiency**: The N-gram approach requires no GPU, no iterative optimization during training, and is easier to deploy in resource-constrained environments.
 
-### 8.3 Complementarity of the Two Approaches
+## Complementarity of the Two Approaches
 
 | Dimension | N-gram | R-GCN |
 | --- | --- | --- |
@@ -442,7 +442,7 @@ Despite R-GCN's comprehensive numerical superiority, the N-gram approach retains
 | Cold Start | Feasible | Requires initial labels |
 | Computational Cost | Low | Moderate |
 
-## 9. Interpretability Analysis
+# Interpretability Analysis
 
 The N-gram approach's primary advantage lies in its interpretability structure:
 
@@ -455,27 +455,27 @@ This explanation structure is well-suited for SOC or internal audit scenarios. A
 
 The R-GCN approach has weaker interpretability, but can be partially compensated through post-hoc explanation techniques such as node embedding analysis, relational attention weights, or gradient attribution.
 
-## 10. Limitations
+# Limitations
 
-### 10.1 Data Level
+## Data Level
 
 - Ground truth relies on the official red-team roster and does not cover unknown attack types in real business environments;
 - Behavioral token granularity is relatively coarse; file paths, email body text, recipient relationships, and role-based access permissions are not fully utilized;
 - R-GCN currently does not use email.csv data (1.3 GB), potentially missing critical email behavior features for S2 and S3 scenarios.
 
-### 10.2 Method Level
+## Method Level
 
 - The N-gram approach's fusion weights are manually specified and have not been systematically tuned through cross-validation or Bayesian optimization;
 - The N-gram language model uses only a population-level benign baseline and has not established individual user historical baselines;
 - The R-GCN approach is transductive and cannot directly classify previously unseen new users;
-- R-GCN currently does not incorporate temporal information — all events are aggregated into static counts, potentially losing temporal attack chain patterns.
+- R-GCN currently does not incorporate temporal information -- all events are aggregated into static counts, potentially losing temporal attack chain patterns.
 
-### 10.3 Evaluation Level
+## Evaluation Level
 
 - The two approaches use slightly different evaluation protocols: N-gram uses 70/30 benign user split + full scoring, while R-GCN uses 5-fold CV + OOF aggregation. Although both ultimately report metrics on all 1,000 users, training information utilization differs;
 - R-GCN uses malicious labels for supervised training, while N-gram is essentially unsupervised, creating a certain asymmetry in direct comparison.
 
-## 11. Future Directions
+# Future Directions
 
 1. **Fuse the advantages of both approaches**: Build an ensemble system using N-gram for interpretable initial screening and rule-based alerting, and R-GCN for high-accuracy ranking and priority adjustment;
 2. **Introduce temporal graphs**: Extend R-GCN to temporal heterogeneous graphs (e.g., T-GCN or dynamic graph networks) to capture temporal evolution of behavioral sequences;
@@ -484,9 +484,9 @@ The R-GCN approach has weaker interpretability, but can be partially compensated
 5. **Automatic template mining**: Use PrefixSpan, GSP, or SPADE to automatically mine discriminative frequent sequences from malicious and benign subsets, replacing manual templates;
 6. **Learn fusion weights**: Under the constraint of maintaining interpretability, use logistic regression or learning-to-rank to automatically learn the N-gram four-component weights;
 7. **Enhance graph interpretability**: Add GNNExplainer or attention mechanisms to R-GCN to output the most influential subgraphs and relations for each prediction;
-8. **Personalized baselines**: Use each user's own past 30–60 days of behavior as a reference to detect behavioral drift, reducing false positives for highly active benign users.
+8. **Personalized baselines**: Use each user's own past 30-60 days of behavior as a reference to detect behavioral drift, reducing false positives for highly active benign users.
 
-## 12. Conclusion
+# Conclusion
 
 This project implements and compares two insider threat detection approaches on the complete CMU-CERT r4.2 dataset. The experimental results demonstrate:
 
@@ -500,7 +500,7 @@ This project implements and compares two insider threat detection approaches on 
 
 Overall, this project provides empirical evidence for method selection in insider threat detection: when labeled data is available, graph neural network methods offer clear advantages; in label-free or interpretability-critical scenarios, domain-knowledge-driven sequence matching remains a viable choice.
 
-## Appendix A: Project File Reference
+# Appendix A: Project File Reference
 
 | File | Purpose |
 | --- | --- |
@@ -516,7 +516,7 @@ Overall, this project provides empirical evidence for method selection in inside
 | `src/compare_algorithms.py` | Dual-algorithm performance comparison and visualization |
 | `src/run_full_pipeline.py` | One-click full pipeline runner |
 
-## Appendix B: Output File Inventory
+# Appendix B: Output File Inventory
 
 | File | Contents |
 | --- | --- |
@@ -532,7 +532,7 @@ Overall, this project provides empirical evidence for method selection in inside
 | `outputs/comparison/comparison_report.md` | Dual-algorithm comparison report |
 | `outputs/comparison/fig_*.png` | Comparison visualization charts (5 figures) |
 
-## Appendix C: Figure Index
+# Appendix C: Figure Index
 
 | Figure | Description | File |
 | --- | --- | --- |
@@ -548,7 +548,7 @@ Overall, this project provides empirical evidence for method selection in inside
 | Figure 10 | N-gram malicious user rank distribution | `outputs/fig_malicious_ranks.png` |
 | Figure 11 | Dual-algorithm risk score distribution comparison | `outputs/comparison/fig_score_dist_comparison.png` |
 
-## Appendix D: Environment and Reproducibility
+# Appendix D: Environment and Reproducibility
 
 ```bash
 # Activate virtual environment

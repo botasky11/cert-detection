@@ -284,6 +284,14 @@ R-GCN 在两个核心指标上全面领先。PR-AUC 的差距尤为显著（0.33
 
 R-GCN 的 5-fold 交叉验证结果也非常稳定：各折 AUC 为 [0.9981, 0.9923, 0.9939, 0.9866, 0.9885]，均值 **0.9919 ± 0.0041**。
 
+![ROC 曲线对比](outputs/comparison/fig_roc_comparison.png)
+
+图 1 展示两种方法的 ROC 曲线。R-GCN 曲线整体更靠近左上角，说明在不同阈值下均能保持更高的真正率和更低的误报率。
+
+![Precision-Recall 曲线对比](outputs/comparison/fig_pr_comparison.png)
+
+图 2 展示两种方法的 PR 曲线。由于恶意用户仅占 7%，PR 曲线比 ROC 曲线更能反映真实排查压力；R-GCN 的曲线明显高于 N-gram，说明其在高召回区间仍能维持更好的精确率。
+
 ### 7.2 Top-K 排查效果对比
 
 在安全运营场景中，分析人员通常优先查看风险排名靠前的用户，因此 Top-K 指标比单纯分类阈值更有实际意义。
@@ -302,6 +310,10 @@ R-GCN 的 5-fold 交叉验证结果也非常稳定：各折 AUC 为 [0.9981, 0.9
 - R-GCN 在 Top-70 时已达到 80% 召回率（56/70），而 N-gram 在 Top-100 时仅 53%（37/70）；
 - R-GCN 在 Top-100 中命中了 69/70 恶意用户（仅漏掉 1 人），接近完美召回。
 
+![Top-K Precision 与 Recall 对比](outputs/comparison/fig_topk_comparison.png)
+
+图 3 给出了 Top-K 精确率和召回率对比。R-GCN 在 Top-10 到 Top-100 的所有 K 值上均明显领先，尤其在 Top-70 时已经达到 80% 召回，适合有限人工审查资源下的优先级排序。
+
 ### 7.3 场景级检测能力对比
 
 | 场景 | 描述 | 用户数 | N-gram Top-70 | R-GCN Top-70 | N-gram Top-100 | R-GCN Top-100 |
@@ -313,6 +325,10 @@ R-GCN 的 5-fold 交叉验证结果也非常稳定：各折 AUC 为 [0.9981, 0.9
 **S2 场景差异最为突出**：N-gram 在 Top-100 中仅发现 S2 的 16.67% 恶意用户（5/30），而 R-GCN 发现了 96.67%（29/30）。这是因为 S2 的行为特征（求职浏览 + 文档外发）与良性用户高度重叠，83% 的良性用户也有求职网站访问记录。N-gram 方法将 `HTTP_JOBHUNT_WH` 权重设为 0（等同噪声），导致 S2 检测几乎依赖弱信号；而 R-GCN 通过图结构中用户-PC-URL 的交互模式，自动学习到了更细粒度的区分特征。
 
 S1 和 S3 场景在 R-GCN 的 Top-100 中均实现了 100% 召回。
+
+![场景级 Recall 对比](outputs/comparison/fig_scenario_comparison.png)
+
+图 4 进一步展示了分场景 Top-70 与 Top-100 Recall。S2 的提升最明显，说明异构图结构能够补足弱 token 信号难以表达的关联模式。
 
 ### 7.4 N-gram 方法详细结果
 
@@ -329,9 +345,21 @@ S1 和 S3 场景在 R-GCN 的 Top-100 中均实现了 100% 召回。
 
 PR-AUC 在评估集上显著高于全量集，主要因为评估集中恶意样本占比更高（70/349=20%），在全量集中恶意用户仅占 7%。
 
+![N-gram ROC 与 PR 曲线](outputs/fig_roc_pr.png)
+
+图 5 是 N-gram 方法单独的 ROC 和 PR 曲线。该方法具备较好的整体排序能力，但在正样本稀疏场景下，PR 曲线显示其高召回区间精确率下降较快。
+
+![N-gram Top-K Precision 与 Recall](outputs/fig_topk.png)
+
+图 6 展示 N-gram 方法自身的 Top-K 变化趋势。随着 K 增大，召回率逐步提升，但精确率波动明显，反映出规则模板对部分良性高活跃用户存在误报。
+
 #### 7.4.2 风险分数分布
 
 全量用户中，良性用户平均风险分数为 0.1176，中位数为 0.0870；恶意用户平均风险分数为 0.3304，中位数为 0.3250。两类用户的分布存在一定分离，但重叠区域较大，部分良性用户风险分数较高（最高达 0.7927），导致精确率不高。
+
+![N-gram 风险分数分布](outputs/fig_risk_distribution.png)
+
+图 7 展示 N-gram 风险分数分布。恶意用户整体右移，但良性和恶意分布仍存在较大重叠，这是该方法 Top-K 精确率受限的重要原因。
 
 #### 7.4.3 检测器贡献分析
 
@@ -341,6 +369,18 @@ N-gram 方法的 Top-20 高风险用户中，5 名为真正恶意用户，其中
 - BSS0369（S3，排名第 6）：与 S3 签名序列相似度最高。
 
 S3 场景用户排名普遍靠前，因为 keylogger 相关 token 稀有且威胁权重高（8.0）；S2 场景用户排名最分散，最差排名达到 408 位。
+
+![N-gram Top-30 检测器贡献](outputs/fig_top30_contribution.png)
+
+图 8 展示 Top-30 风险用户中四个检测器的贡献。黑框标记真实恶意用户，可以看到部分恶意用户由多个检测器共同抬高风险分数，而部分良性用户因规则或稀有行为命中产生高分。
+
+![N-gram 场景覆盖](outputs/fig_scenario_breakdown.png)
+
+图 9 展示 N-gram 方法在 Top-80 中的场景覆盖情况。S1 和 S3 的规则命中更集中，S2 覆盖不足，与场景级 Recall 的结果一致。
+
+![N-gram 恶意用户排名分布](outputs/fig_malicious_ranks.png)
+
+图 10 展示 70 个真实恶意用户在 N-gram 全量排序中的排名分布。排名越靠前越利于人工排查；S2 场景排名更靠后，是后续优化重点。
 
 ### 7.5 R-GCN 方法详细结果
 
@@ -362,6 +402,10 @@ S3 场景用户排名普遍靠前，因为 keylogger 相关 token 稀有且威�
 R-GCN 的 Top-10 用户全部为恶意用户（精确率 100%），前 30 名中仅有 4 名良性用户误报。最高分恶意用户 JRG0207 的预测概率达到 0.9995。
 
 在 Top-100 中，R-GCN 命中了 69/70 恶意用户，唯一遗漏的用户排名也在 100 名附近，几乎实现了完美召回。
+
+![双算法风险分数分布对比](outputs/comparison/fig_score_dist_comparison.png)
+
+图 11 对比了两种方法的风险分数分布。R-GCN 对良性和恶意用户的分离更明显，高分区恶意用户集中度更高；N-gram 分布重叠更明显，导致高风险名单中混入更多良性用户。
 
 ## 8. 性能差异分析
 
@@ -488,7 +532,23 @@ R-GCN 方法的可解释性较弱，但可以通过分析节点嵌入、关系�
 | `outputs/comparison/comparison_report.md` | 双算法对比报告 |
 | `outputs/comparison/fig_*.png` | 对比可视化图表（5 张） |
 
-## 附录 C：环境与复现
+## 附录 C：图表索引
+
+| 图号 | 图表 | 文件 |
+| --- | --- | --- |
+| 图 1 | 双算法 ROC 曲线对比 | `outputs/comparison/fig_roc_comparison.png` |
+| 图 2 | 双算法 Precision-Recall 曲线对比 | `outputs/comparison/fig_pr_comparison.png` |
+| 图 3 | 双算法 Top-K Precision/Recall 对比 | `outputs/comparison/fig_topk_comparison.png` |
+| 图 4 | 双算法场景级 Recall 对比 | `outputs/comparison/fig_scenario_comparison.png` |
+| 图 5 | N-gram ROC 与 PR 曲线 | `outputs/fig_roc_pr.png` |
+| 图 6 | N-gram Top-K Precision 与 Recall | `outputs/fig_topk.png` |
+| 图 7 | N-gram 风险分数分布 | `outputs/fig_risk_distribution.png` |
+| 图 8 | N-gram Top-30 检测器贡献 | `outputs/fig_top30_contribution.png` |
+| 图 9 | N-gram 场景覆盖 | `outputs/fig_scenario_breakdown.png` |
+| 图 10 | N-gram 恶意用户排名分布 | `outputs/fig_malicious_ranks.png` |
+| 图 11 | 双算法风险分数分布对比 | `outputs/comparison/fig_score_dist_comparison.png` |
+
+## 附录 D：环境与复现
 
 ```bash
 # 激活虚拟环境
